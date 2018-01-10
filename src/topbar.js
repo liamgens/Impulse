@@ -13,7 +13,7 @@ export default class TopBar extends React.Component{
             <Grid>
                 <Row>
                 <Col xs={6} md={6}>
-                    <DropMenu items={projects.sort()}/>
+                    <DropMenu project={true} items={projects.sort()}/>
                 </Col>
                 <Col xs={6} md={6}>                
                     <DropMenu/>

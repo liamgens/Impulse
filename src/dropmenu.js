@@ -1,17 +1,20 @@
 import React from 'react';
 import style from './dropmenu.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router-dom';
 
 
 class DropMenu extends React.Component {
     constructor(props) {
         super(props);
 
+
         this.state = {
             current: this.props.items != null ? this.props.items[0] : "New",
             values: this.props.items != null ? this.props.items : ["New", "Open", "In Progress", "Done"],
             hidden: true,
-            flipped: "scale(1,-1)"
+            flipped: "scale(1,-1)",
+            project: this.props.project != null ? true : false
         }
 
         this.handleSelectionChange = this.handleSelectionChange.bind(this);
@@ -41,7 +44,7 @@ class DropMenu extends React.Component {
         let listItems = [];
         for (let i = 0; i < this.state.values.length; i++) {
             if (this.state.values[i] != this.state.current) {
-                listItems.push(<ListItem key={i} onClick={this.handleSelectionChange} content={this.state.values[i]} />)
+                listItems.push(<ListItem project={this.state.project} key={i} onClick={this.handleSelectionChange} content={this.state.values[i]} />)
             }
         }
 
@@ -85,8 +88,16 @@ class List extends React.Component {
 // Individual item in dropdown menu
 class ListItem extends React.Component {
     render() {
+        let route;
+        if(this.props.project == true){
+            route = "/" + this.props.content + "/New";
+            console.log(route);
+        }else{
+            route = "/Blog/" + this.props.content;
+            console.log(this.props.routes);
+        }
         return (
-            <li onClick={() => this.props.onClick(this.props.content)}>{this.props.content}</li>
+            <Link to={route}><li onClick={() => this.props.onClick(this.props.content)}>{this.props.content}</li></Link>
         )
     }
 }
