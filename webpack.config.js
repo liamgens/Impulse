@@ -25,7 +25,7 @@ module.exports = {
             },
           },
         ],
-        exclude: /node_modules/,
+        include: /./,
       },
       {
         test: /node_modules\/.+\.css$/,
@@ -96,6 +96,7 @@ module.exports = {
           mimetype: 'image/gif',
         },
       },
+      
     ],
   },
 };

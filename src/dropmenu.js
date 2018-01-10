@@ -8,8 +8,8 @@ class DropMenu extends React.Component {
         super(props);
 
         this.state = {
-            current: "New",
-            values: ["New", "Open", "In Progress", "Done"],
+            current: this.props.items != null ? this.props.items[0] : "New",
+            values: this.props.items != null ? this.props.items : ["New", "Open", "In Progress", "Done"],
             hidden: true,
             flipped: "scale(-1,1)"
         }
@@ -61,7 +61,7 @@ class DropMenu extends React.Component {
                         {listItems}
                     </ul>
                 </List>
-            </div >
+            </div>
         )
     }
 }

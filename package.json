@@ -27,8 +27,11 @@
     "webpack-hot-middleware": "^2.21.0"
   },
   "dependencies": {
+    "bootstrap": "^3.3.7",
+    "file-loader": "^1.1.6",
     "react": "^16.2.0",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-bootstrap": "^0.32.0",
     "react-dom": "^16.2.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"

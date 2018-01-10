@@ -1,8 +1,9 @@
 import React from 'react';
 import DropMenu from './dropmenu';
+import TopBar from './topbar';
 
 export default () => (
   <div>
-    <DropMenu></DropMenu>
+    <TopBar />
   </div>
 );
