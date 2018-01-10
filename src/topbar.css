@@ -1,5 +1,6 @@
-/* .topbar-div {
-
+.topbar-div {
+    width: 100%;
+    height: auto;
 }
 
 .project-switcher {
@@ -8,4 +9,4 @@
 
 .category-switcher {
 
-} */
+}

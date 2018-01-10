@@ -11,7 +11,7 @@ class DropMenu extends React.Component {
             current: this.props.items != null ? this.props.items[0] : "New",
             values: this.props.items != null ? this.props.items : ["New", "Open", "In Progress", "Done"],
             hidden: true,
-            flipped: "scale(-1,1)"
+            flipped: "scale(1,-1)"
         }
 
         this.handleSelectionChange = this.handleSelectionChange.bind(this);
@@ -30,7 +30,7 @@ class DropMenu extends React.Component {
             hidden: !(prevState.hidden)
         }))
 
-        let scale = this.state.hidden ? "scale(1,-1)" : "scale(-1,1)";
+        let scale = this.state.hidden ? "scale(-1,1)" : "scale(1,-1)";
         this.setState({ flipped: scale });
         // document.getElementById("icon").style.transform = scale;
     }
