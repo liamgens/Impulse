@@ -21,7 +21,7 @@
 li {
     padding-left: 20px;
     width: auto;
-    color: white;
+    color: black;
 }
 
 h4 {
@@ -34,12 +34,12 @@ h4 {
     width: auto;
 }
   
-.toggle-enter {
+.toggleEnter {
     animation-name: fade-in;
     animation-duration: 300ms;
 }
   
-.toggle-leave {
+.toggleLeave {
     animation-name: fade-out;
     animation-duration: 300ms;
 }

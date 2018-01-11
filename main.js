@@ -13,20 +13,20 @@ const startServer = require('./serve');
 // be closed automatically when the JavaScript object is garbage collected.
 let mainWindow
 
-function createWindow () {
+function createWindow() {
   startServer();
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow({ width: 800, height: 600 })
 
   // and load the index.html of the app.
   mainWindow.loadURL(
-    'http://localhost:3000/impulse/open'
-  //
-  //   url.format({
-  //   pathname: path.join(__dirname, 'index.html'),
-  //   protocol: 'file:',
-  //   slashes: true
-  // }))
+    'http://localhost:3000/'
+    //
+    //   url.format({
+    //   pathname: path.join(__dirname, 'index.html'),
+    //   protocol: 'file:',
+    //   slashes: true
+    // }))
   )
 
   // Open the DevTools.

@@ -49,8 +49,8 @@ class DropMenu extends React.Component {
 
         return (
             <div>
-                <div className="current" onClick={this.onClick}>
-                    <div className="drop-icon">
+                <div className={style["current"]} onClick={this.onClick}>
+                    <div className={style["drop-icon"]}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" transform={this.state.flipped}>
                             <path d="M47.449,66.182L47.449,66.182c-0.663,0-1.299-0.264-1.768-0.732l-27.36-27.363c-0.977-0.977-0.977-2.56,0-3.535 c0.977-0.977,2.559-0.977,3.535,0l25.593,25.596l25.595-25.594c0.977-0.977,2.559-0.977,3.535,0s0.977,2.559,0,3.535L49.217,65.449 C48.748,65.918,48.112,66.182,47.449,66.182z"
                             />
@@ -59,7 +59,7 @@ class DropMenu extends React.Component {
                     <h4>{this.state.current}</h4>
                 </div>
                 <List hidden={this.state.hidden}>
-                    <ul className="options-list">
+                    <ul className={style["options-list"]}>
                         {listItems}
                     </ul>
                 </List>
@@ -68,23 +68,16 @@ class DropMenu extends React.Component {
     }
 }
 
-
 // Used to display the other options in the dropdown menu.
 class List extends React.Component {
     render() {
         return (
             <div>
-                <ReactCSSTransitionGroup
-                    transitionName="toggle"
-                    transitionEnterTimeout={300}
-                    transitionLeaveTimeout={300}>
-                    {this.props.hidden ? null : <div className="toggle-base">{this.props.children}</div>}
-                </ReactCSSTransitionGroup>
+                {this.props.hidden ? null : <div className={style["toggle-base"]}>{this.props.children}</div>}
             </div>
         )
     }
 }
-
 
 // Individual item in dropdown menu
 class ListItem extends React.Component {

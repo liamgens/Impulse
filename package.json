@@ -2,7 +2,7 @@
   "name": "impulse",
   "version": "1.0.0",
   "description": "A progress tracker for the solo developer",
-  "main": "index.js",
+  "main": "main.js",
   "author": "Liam Gensel",
   "license": "MIT",
   "scripts": {
