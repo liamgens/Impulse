@@ -9,7 +9,7 @@ export default () => (
       <TopBar />
     </Row>
     <Row>
-      <Col xs={6} md={4}>
+      <Col xs={6} md={6}>
         <Task />
       </Col>
     </Row>
