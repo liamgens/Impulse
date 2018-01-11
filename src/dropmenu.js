@@ -8,7 +8,6 @@ class DropMenu extends React.Component {
     constructor(props) {
         super(props);
 
-
         this.state = {
             current: this.props.items != null ? this.props.items[0] : "New",
             values: this.props.items != null ? this.props.items : ["New", "Open", "In Progress", "Done"],
@@ -27,15 +26,15 @@ class DropMenu extends React.Component {
         this.onClick();
     }
 
-    // Flips the arrow icon and toggles the list
     onClick() {
+        // Flip the arrow icon and toggle the list
         this.setState((prevState, props) => ({
             hidden: !(prevState.hidden)
         }))
 
         let scale = this.state.hidden ? "scale(-1,1)" : "scale(1,-1)";
         this.setState({ flipped: scale });
-        // document.getElementById("icon").style.transform = scale;
+
     }
 
     render() {
@@ -44,7 +43,7 @@ class DropMenu extends React.Component {
         let listItems = [];
         for (let i = 0; i < this.state.values.length; i++) {
             if (this.state.values[i] != this.state.current) {
-                listItems.push(<ListItem project={this.state.project} key={i} onClick={this.handleSelectionChange} content={this.state.values[i]} />)
+                listItems.push(<ListItem key={i} onClick={this.handleSelectionChange} content={this.state.values[i]} />)
             }
         }
 
@@ -73,14 +72,16 @@ class DropMenu extends React.Component {
 // Used to display the other options in the dropdown menu.
 class List extends React.Component {
     render() {
-        return <div>
-            <ReactCSSTransitionGroup
-                transitionName="toggle"
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}>
-                {this.props.hidden ? null : <div className="toggle-base">{this.props.children}</div>}
-            </ReactCSSTransitionGroup>
-        </div>
+        return (
+            <div>
+                <ReactCSSTransitionGroup
+                    transitionName="toggle"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    {this.props.hidden ? null : <div className="toggle-base">{this.props.children}</div>}
+                </ReactCSSTransitionGroup>
+            </div>
+        )
     }
 }
 
@@ -88,16 +89,8 @@ class List extends React.Component {
 // Individual item in dropdown menu
 class ListItem extends React.Component {
     render() {
-        let route;
-        if(this.props.project == true){
-            route = "/" + this.props.content + "/New";
-            console.log(route);
-        }else{
-            route = "/Blog/" + this.props.content;
-            console.log(this.props.routes);
-        }
         return (
-            <Link to={route}><li onClick={() => this.props.onClick(this.props.content)}>{this.props.content}</li></Link>
+            <li onClick={() => this.props.onClick(this.props.content)}>{this.props.content}</li>
         )
     }
 }
