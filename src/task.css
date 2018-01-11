@@ -1,0 +1,40 @@
+.task-div {
+    width: auto;
+    height: auto;
+    margin: 10px;
+    color: white;
+    text-align: center;
+}
+
+.task-panel {
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin: 10px;
+    width: auto;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
+    border: solid 1px #e8e8e8;
+    padding: 10px;
+    margin: 20px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+}
+
+.main-task {
+    margin: 5px;
+}
+
+.task-complete {
+    text-decoration: line-through;
+    color: grey;
+}
+
+.task-heading {
+    font-size: 1.3em;
+}
+
+.task-body {
+    margin-left: 20px;
+}

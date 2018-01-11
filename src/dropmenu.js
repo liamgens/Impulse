@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './dropmenu.css';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router-dom';
 
 
 class DropMenu extends React.Component {
@@ -11,7 +12,8 @@ class DropMenu extends React.Component {
             current: this.props.items != null ? this.props.items[0] : "New",
             values: this.props.items != null ? this.props.items : ["New", "Open", "In Progress", "Done"],
             hidden: true,
-            flipped: "scale(1,-1)"
+            flipped: "scale(1,-1)",
+            project: this.props.project != null ? true : false
         }
 
         this.handleSelectionChange = this.handleSelectionChange.bind(this);
@@ -24,15 +26,15 @@ class DropMenu extends React.Component {
         this.onClick();
     }
 
-    // Flips the arrow icon and toggles the list
     onClick() {
+        // Flip the arrow icon and toggle the list
         this.setState((prevState, props) => ({
             hidden: !(prevState.hidden)
         }))
 
         let scale = this.state.hidden ? "scale(-1,1)" : "scale(1,-1)";
         this.setState({ flipped: scale });
-        // document.getElementById("icon").style.transform = scale;
+
     }
 
     render() {
@@ -70,14 +72,16 @@ class DropMenu extends React.Component {
 // Used to display the other options in the dropdown menu.
 class List extends React.Component {
     render() {
-        return <div>
-            <ReactCSSTransitionGroup
-                transitionName="toggle"
-                transitionEnterTimeout={300}
-                transitionLeaveTimeout={300}>
-                {this.props.hidden ? null : <div className="toggle-base">{this.props.children}</div>}
-            </ReactCSSTransitionGroup>
-        </div>
+        return (
+            <div>
+                <ReactCSSTransitionGroup
+                    transitionName="toggle"
+                    transitionEnterTimeout={300}
+                    transitionLeaveTimeout={300}>
+                    {this.props.hidden ? null : <div className="toggle-base">{this.props.children}</div>}
+                </ReactCSSTransitionGroup>
+            </div>
+        )
     }
 }
 
