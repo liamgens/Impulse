@@ -1,9 +1,10 @@
 import React from 'react'
 import FeatureStyle from './feature.css'
 import Task from './feature/task'
+import ProgessBar from './feature/progressBar'
+
 
 export default class Feature extends React.Component {
-
     render() {
         return (
             <div className={FeatureStyle.featureContainer}>
@@ -14,7 +15,7 @@ export default class Feature extends React.Component {
                     <Task description="Code some stuff." />
                 </div>
                 <div className={FeatureStyle.featureToolbar}>
-                    Add button & Progess Bar
+                    <ProgessBar percentage="70" />
                 </div>
             </div>
         )

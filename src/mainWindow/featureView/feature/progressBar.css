@@ -1,0 +1,13 @@
+.background {
+    width: 100px;
+    height: 20px;
+    border: 1px solid black;
+    margin: 0;
+}
+
+.foreground {
+    width: 0px;
+    height: 18px;
+    background-color: rgb(16, 173, 16);
+    margin: 0;
+}
