@@ -18,7 +18,19 @@ function getPercentageDone(feature) {
     return percentage
 }
 
+
 export default class Feature extends React.Component {
+
+    // render all the tasks in the feature
+    renderTasks() {
+        let tasksToRender = []
+        for (let i = 0; i < this.props.feature.tasks.length; i++) {
+            let task = this.props.feature.tasks[i]
+            tasksToRender.push(<Task />)
+        }
+        return tasksToRender
+    }
+
     render() {
         return (
             <div className={FeatureStyle.featureContainer}>
@@ -26,8 +38,7 @@ export default class Feature extends React.Component {
                     {this.props.feature.title}
                 </div>
                 <div className={FeatureStyle.taskView}>
-                    <Task description="Code some stuff." />
-                    <Task description="Code some stuff." />
+                    {this.renderTasks()}
                 </div>
                 <div className={FeatureStyle.featureToolbar}>
                     <ProgessBar percentage={getPercentageDone(this.props.feature)} />

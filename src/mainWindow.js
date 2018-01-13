@@ -10,6 +10,13 @@ export default class MainWindow extends React.Component {
                 <ApplicationHeader />
                 <FeatureView />
                 <ApplicationFooter />
+
+                {/* <h1>{String(this.props.check.title)}</h1>
+
+                <button onClick={() => this.props.completeTask({ title: !this.props.check.title })}>
+                    Click Me!
+                </button> */}
+
             </div>
         )
     }
