@@ -1,11 +1,18 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MainWindow from './mainWindow'
+import App from './components/app/app'
+import { createStore, combineReducers } from 'redux';
+import { features } from './reducers';
 import { Provider } from 'react-redux';
-import { store } from './redux';
+
+const reducers = combineReducers({
+    features,
+});
+
+const store = createStore(reducers);
 
 ReactDOM.render(
     <Provider store={store}>
-        <MainWindow />
+        <App />
     </Provider>
     , document.getElementById('app'))

@@ -1,5 +1,5 @@
 import React from 'react'
-import mainWindowStyle from './mainWindow.css'
+import mainWindowStyle from '../app/app.css'
 
 export default class ApplicationFooter extends React.Component {
     render() {
