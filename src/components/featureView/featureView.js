@@ -1,38 +1,18 @@
-import React from 'react'
-import Feature from '../feature/feature'
-import mainWindowStyle from '../app/app.css'
+import React from 'react';
+import Feature from '../feature/feature';
+import mainWindowStyle from '../app/app.css';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// // dummy data for now
-// // tasks
-// const task1 = {
-//     description: "task1",
-//     completed: true
-// }
+let ID = 0;
+let FEATURE = "";
 
-// const task2 = {
-//     description: "task2",
-//     completed: false
-// }
-
-// const task3 = {
-//     description: "task3",
-//     completed: false
-// }
-
-// // feature that contains tasks
-// const feature = {
-//     title: "Feature",
-//     tasks: [task1, task2, task3]
-// }
-
-export class FeatureView extends React.Component {
+class FeatureView extends React.Component {
 
     renderFeatures() {
         return this.props.features.map((feature) => {
             return (
-                <Feature key={feature.id} title={feature.title} />
+                <Feature key={feature.id} id={feature.id} />
             );
         });
     }
@@ -40,21 +20,24 @@ export class FeatureView extends React.Component {
     render() {
         return (
             <div className={mainWindowStyle.featureView}>
-                <button onClick={this.props.addFeature}>Add Feature</button>
-                {/* <Feature /> */}
                 {this.renderFeatures()}
+                <input ref={node => {
+                    FEATURE = node;
+                }}></input>
+                <button onClick={this.props.addFeature}>Add Feature</button>
             </div>
         )
     }
 }
 
-const addFeature = (feature) => {
+const addFeature = () => {
     return {
         type: "ADD_FEATURE",
-        id: 1,
-        title: "TEST"
+        id: ID++,
+        title: FEATURE.value
     }
 }
+
 
 const mapStateToProps = (state) => {
     return {
