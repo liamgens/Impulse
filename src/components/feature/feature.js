@@ -5,25 +5,25 @@ import ProgessBar from '../progressBar/progressBar';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-let FEATURE_ID;
-let TASK = "";
+// let FEATURE_ID;
+// let TASK = "";
 
 class Feature extends React.Component {
 
     renderTasks() {
-        return this.props.features[FEATURE_ID].tasks.map((a, index) => {
+        return this.props.features[this.props.id].tasks.map((a, index) => {
             return (
-                <Task key={index} id={index} fid={FEATURE_ID} />
+                <Task key={index} id={index} fid={this.props.id} />
             );
         });
     }
 
     calculatePercentage() {
-        let numberOfTasks = this.props.features[FEATURE_ID].tasks.length;
+        let numberOfTasks = this.props.features[this.props.id].tasks.length;
         let completed = 0;
 
-        for (var task in this.props.features[FEATURE_ID].tasks) {
-            if (this.props.features[FEATURE_ID].tasks[task].completed === true) {
+        for (var task in this.props.features[this.props.id].tasks) {
+            if (this.props.features[this.props.id].tasks[task].completed === true) {
                 completed += 1;
             }
         }
@@ -34,8 +34,6 @@ class Feature extends React.Component {
     }
 
     render() {
-        FEATURE_ID = this.props.id
-
         return (
             <div className={FeatureStyle.featureContainer}>
                 <div className={FeatureStyle.featureHeading}>
@@ -44,9 +42,9 @@ class Feature extends React.Component {
                 <div className={FeatureStyle.taskView}>
                     {this.renderTasks()}
                     <input ref={node => {
-                        TASK = node;
+                        this.task = node;
                     }}></input>
-                    <button onClick={this.props.addTask}>Add Task</button>
+                    <button onClick={() => this.props.addTask(this.props.id, this.task)}>Add Task</button>
 
                 </div>
                 <div className={FeatureStyle.featureToolbar}>
@@ -57,11 +55,11 @@ class Feature extends React.Component {
     }
 }
 
-const addTask = () => {
+const addTask = (featureID, task) => {
     return {
         type: "ADD_TASK",
-        id: FEATURE_ID,
-        task: TASK.value
+        id: featureID,
+        task: task.value
     }
 }
 

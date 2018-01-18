@@ -3,19 +3,16 @@ import TaskStyle from './task.css'
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-let FEATURE_ID;
 
 class Task extends React.Component {
     render() {
-
-        FEATURE_ID = this.props.fid;
 
         let taskDescription = this.props.features[this.props.fid].tasks[this.props.id].description;
         let taskCompleted = this.props.features[this.props.fid].tasks[this.props.id].completed;
 
         return (
             <div className={TaskStyle.taskContainer}>
-                <div className={TaskStyle.checkbox} onClick={() => this.props.toggleTask(this.props.id)}>
+                <div className={TaskStyle.checkbox} onClick={() => this.props.toggleTask(this.props.fid, this.props.id)}>
                     {!taskCompleted ? null :
                         <div>
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 125">
@@ -24,17 +21,19 @@ class Task extends React.Component {
                             </svg>
                         </div>
                     }
-                </div >
-                {taskDescription}
+                </div>
+                <span style={{
+                    textDecoration: taskCompleted ? "line-through" : "none"
+                }}>{taskDescription}</span>
             </div>
         )
     }
 }
 
-const toggleTask = (task_id) => {
+const toggleTask = (feature_id, task_id) => {
     return {
         type: "TOGGLE_TASK",
-        id: FEATURE_ID,
+        id: feature_id,
         task_id: task_id
     }
 }
