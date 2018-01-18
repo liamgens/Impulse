@@ -5,21 +5,6 @@ import ProgessBar from '../progressBar/progressBar';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-// // function that calculates the percentage of completion for a feature
-// const getPercentageDone = (feature) => {
-//     let count = feature.tasks.length
-//     let completed = 0
-
-//     for (var task in feature.tasks) {
-//         if (feature.tasks[task].completed) {
-//             completed += 1
-//         }
-//     }
-
-//     let percentage = Math.ceil((completed / count) * 100)
-//     return percentage
-// }
-
 let FEATURE_ID;
 let TASK = "";
 
@@ -33,8 +18,24 @@ class Feature extends React.Component {
         });
     }
 
+    calculatePercentage() {
+        let numberOfTasks = this.props.features[FEATURE_ID].tasks.length;
+        let completed = 0;
+
+        for (var task in this.props.features[FEATURE_ID].tasks) {
+            if (this.props.features[FEATURE_ID].tasks[task].completed === true) {
+                completed += 1;
+            }
+        }
+
+        let percentage = Math.ceil((completed / numberOfTasks) * 100);
+
+        return isNaN(percentage) ? 0 : percentage;
+    }
+
     render() {
         FEATURE_ID = this.props.id
+
         return (
             <div className={FeatureStyle.featureContainer}>
                 <div className={FeatureStyle.featureHeading}>
@@ -49,7 +50,7 @@ class Feature extends React.Component {
 
                 </div>
                 <div className={FeatureStyle.featureToolbar}>
-                    {/* <ProgessBar percentage={getPercentageDone(this.props.feature)} /> */}
+                    <ProgessBar percentage={this.calculatePercentage()} />
                 </div>
             </div>
         )
