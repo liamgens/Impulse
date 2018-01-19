@@ -21,10 +21,12 @@ class FeatureView extends React.Component {
         return (
             <div className={mainWindowStyle.featureView}>
                 {this.renderFeatures()}
-                <input ref={node => {
-                    FEATURE = node;
-                }}></input>
-                <button onClick={this.props.addFeature}>Add Feature</button>
+                <div className={mainWindowStyle.newFeature}>
+                    <input ref={node => {
+                        FEATURE = node;
+                    }}></input>
+                    <button onClick={this.props.addFeature}>Add Feature</button>
+                </div>
             </div>
         )
     }

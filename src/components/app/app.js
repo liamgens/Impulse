@@ -9,7 +9,7 @@ export default class MainWindow extends React.Component {
             <div>
                 <ApplicationHeader />
                 <FeatureView />
-                <ApplicationFooter />
+                {/* <ApplicationFooter /> */}
             </div>
         );
     }

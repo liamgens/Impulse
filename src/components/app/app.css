@@ -3,10 +3,22 @@
 }
 
 .featureView {
-    height: 80%;
+    height: 90%;
+    /* max-height: 1000px; */
     padding: 5px 20px 5px 20px;
+    /* display: inline-block; */
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow: visible;
 }
 
 .applicationFooter {
-    height: 10%;
+    height: 5%;
+}
+
+.newFeature {
+    width: 250px;
+    margin: 10px;
 }

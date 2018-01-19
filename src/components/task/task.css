@@ -11,4 +11,6 @@
 
 .taskContainer {
     margin-top: 10px;
+    height: 20px;
+    width: 100%;
 }
