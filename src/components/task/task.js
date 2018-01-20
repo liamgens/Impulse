@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 
 
 class Task extends React.Component {
+
+    handleChange(event) {
+        this.props.editTask(this.props.fid, this.props.id, event.target.value);
+    }
     render() {
 
         let taskDescription = this.props.features[this.props.fid].tasks[this.props.id].description;
@@ -22,9 +26,9 @@ class Task extends React.Component {
                         </div>
                     }
                 </div>
-                <span style={{
-                    textDecoration: taskCompleted ? "line-through" : "none"
-                }}>{taskDescription}</span>
+                <input className={TaskStyle.description} value={this.props.features[this.props.fid].tasks[this.props.id].description} onChange={this.handleChange.bind(this)} style={{
+                    textDecoration: taskCompleted ? "line-through" : "none",
+                }} />
             </div>
         )
     }
@@ -38,6 +42,15 @@ const toggleTask = (feature_id, task_id) => {
     }
 }
 
+const editTask = (feature_id, task_id, description) => {
+    return {
+        type: "EDIT_TASK",
+        id: feature_id,
+        task_id: task_id,
+        description: description
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
         features: state.features
@@ -45,7 +58,7 @@ const mapStateToProps = (state) => {
 }
 
 const matchDispatchToProps = (dispatch) => {
-    return bindActionCreators({ toggleTask, }, dispatch);
+    return bindActionCreators({ toggleTask, editTask }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Task);

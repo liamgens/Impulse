@@ -7,11 +7,23 @@
     cursor: pointer;
     float: left;
     margin-right: 5px;
+
 }
 
 .taskContainer {
     margin-top: 10px;
+    margin-bottom: 10px;
     height: 20px;
     width: 100%;
+}
+
+.description{
+    border: none;
+    text-overflow: ellipsis;
+}
+
+.description:focus {
+    outline: none;
+    border-bottom: 0.5px solid gray;
 }
 

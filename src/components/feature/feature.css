@@ -35,6 +35,7 @@
 .featureInput {
     width: 100%;
     border: none;
+    text-overflow: ellipsis;
 }
 
 .featureInput:focus {
