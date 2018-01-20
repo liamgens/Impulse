@@ -1,3 +1,5 @@
+import feature from "./components/feature/feature";
+
 export const features = (state = [], action) => {
     switch (action.type) {
         case 'ADD_FEATURE':
@@ -12,9 +14,11 @@ export const features = (state = [], action) => {
         case 'REMOVE_FEATURE':
             return removeAtIndex(state, action.id);
         case 'ADD_TASK':
-            return addTask(state, action.id, action.task)
+            return addTask(state, action.id, action.task);
+        case 'EDIT_FEATURE':
+            return editFeature(state, action.id, action.title);
         case 'TOGGLE_TASK':
-            return toggleTask(state, action.id, action.task_id)
+            return toggleTask(state, action.id, action.task_id);
         default:
             return state;
     }
@@ -35,5 +39,11 @@ const toggleTask = (features, index, task_id) => {
     let newTasks = [...newFeatures[index].tasks];
     newTasks[task_id].completed = !newTasks[task_id].completed;
     newFeatures[index].tasks = newTasks;
+    return newFeatures;
+}
+
+const editFeature = (features, index, text) => {
+    let newFeatures = [...features];
+    newFeatures[index].title = text;
     return newFeatures;
 }

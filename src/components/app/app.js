@@ -7,7 +7,7 @@ export default class MainWindow extends React.Component {
     render() {
         return (
             <div>
-                <ApplicationHeader />
+                {/* <ApplicationHeader /> */}
                 <FeatureView />
                 {/* <ApplicationFooter /> */}
             </div>

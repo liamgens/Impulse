@@ -18,6 +18,7 @@ class Feature extends React.Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleKeyPress = this.handleKeyPress.bind(this);
+        this.handleFeatureChange = this.handleFeatureChange.bind(this);
     }
 
     handleKeyPress = (event) => {
@@ -46,6 +47,10 @@ class Feature extends React.Component {
         return isNaN(percentage) ? "0" : percentage + "%";
     }
 
+    handleFeatureChange(event) {
+        this.props.editFeature(this.props.id, event.target.value);
+    }
+
     renderTasks() {
         return this.props.features[this.props.id].tasks.map((a, index) => {
             return (
@@ -58,11 +63,12 @@ class Feature extends React.Component {
         return (
             <div className={FeatureStyle.featureContainer}>
                 <div className={FeatureStyle.featureHeading}>
-                    {this.props.features[this.props.id].title}
+                    <input className={FeatureStyle.featureInput} value={this.props.features[this.props.id].title} onChange={this.handleFeatureChange} placeholder="New Feature"></input>
+                    {/* {this.props.features[this.props.id].title} */}
                 </div>
                 <div className={FeatureStyle.taskView}>
                     {this.renderTasks()}
-                    <input onKeyPress={this.handleKeyPress} value={this.state.taskToAdd} onChange={this.handleChange}></input>
+                    <input className={FeatureStyle.taskInput} onKeyPress={this.handleKeyPress} value={this.state.taskToAdd} onChange={this.handleChange} placeholder="New Task"></input>
                 </div>
                 <div className={FeatureStyle.featureToolbar}>
                     <div className={ProgressBarStyle.background}>
@@ -70,7 +76,7 @@ class Feature extends React.Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }
@@ -83,6 +89,14 @@ const addTask = (featureID, task) => {
     }
 }
 
+const editFeature = (featureID, title) => {
+    return {
+        type: "EDIT_FEATURE",
+        id: featureID,
+        title: title
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
         features: state.features
@@ -90,7 +104,7 @@ const mapStateToProps = (state) => {
 }
 
 const matchDispatchToProps = (dispatch) => {
-    return bindActionCreators({ addTask, }, dispatch);
+    return bindActionCreators({ addTask, editFeature }, dispatch);
 }
 
 export default connect(mapStateToProps, matchDispatchToProps)(Feature);

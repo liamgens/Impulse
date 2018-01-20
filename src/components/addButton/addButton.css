@@ -1,0 +1,9 @@
+.button {
+    width: 90px;
+    height: auto;
+    background-color: purple;
+    margin: 10px;
+    text-align: center;
+    color: white;
+    float: right;
+}

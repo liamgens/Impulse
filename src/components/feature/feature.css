@@ -31,3 +31,23 @@
 .featureToolbar {
     height: 2%;
 }
+
+.featureInput {
+    width: 100%;
+    border: none;
+}
+
+.featureInput:focus {
+    outline: none;
+    border-bottom: 0.5px solid gray;
+}
+
+.taskInput {
+    width: 100%;
+    border: none;
+}
+
+.taskInput:focus {
+    outline: none;
+    border-bottom: 0.5px solid gray;
+}
