@@ -6,7 +6,6 @@ export const features = (state = [], action) => {
             return [
                 ...state,
                 {
-                    id: action.id,
                     title: action.title,
                     tasks: []
                 }

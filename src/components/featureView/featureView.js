@@ -11,9 +11,9 @@ let FEATURE = "";
 class FeatureView extends React.Component {
 
     renderFeatures() {
-        return this.props.features.map((feature) => {
+        return this.props.features.map((feature, index) => {
             return (
-                <Feature key={feature.id} id={feature.id} />
+                <Feature key={index} id={index} />
             );
         });
     }
@@ -35,7 +35,6 @@ class FeatureView extends React.Component {
 const addFeature = () => {
     return {
         type: "ADD_FEATURE",
-        id: ID++,
         title: ""
     }
 }
