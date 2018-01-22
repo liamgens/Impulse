@@ -44,6 +44,12 @@
     border-bottom: 0.5px solid gray;
 }
 
+.featureInput:focus + .delete {
+    outline: none;
+    border-bottom: 0.5px solid gray;
+    visibility: hidden;
+}
+
 .taskInput {
     width: 100%;
     border: none;
