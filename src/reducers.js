@@ -16,6 +16,8 @@ export const features = (state = [], action) => {
             return addTask(state, action.id, action.task);
         case 'EDIT_TASK':
             return editTask(state, action.id, action.task_id, action.description);
+        case 'REMOVE_TASK':
+            return removeTask(state, action.id, action.task_id)
         case 'EDIT_FEATURE':
             return editFeature(state, action.id, action.title);
         case 'TOGGLE_TASK':
@@ -39,6 +41,13 @@ const toggleTask = (features, index, task_id) => {
     let newFeatures = [...features];
     let newTasks = [...newFeatures[index].tasks];
     newTasks[task_id].completed = !newTasks[task_id].completed;
+    newFeatures[index].tasks = newTasks;
+    return newFeatures;
+}
+
+const removeTask = (features, index, task_id) => {
+    let newFeatures = [...features];
+    let newTasks = newFeatures[index].tasks.filter((_, i) => i !== task_id);
     newFeatures[index].tasks = newTasks;
     return newFeatures;
 }

@@ -15,12 +15,18 @@
     margin-bottom: 10px;
     height: 20px;
     width: 100%;
+    
 }
+
+/* .description:hover + .delete{
+    visibility: visible;
+    fill:darkred;
+} */
 
 .description{
     border: none;
     text-overflow: ellipsis;
-    width: 85%;
+    width: 75%;
 }
 
 .description:focus {
@@ -28,3 +34,14 @@
     border-bottom: 0.5px solid gray;
 }
 
+.delete {
+    height: 15px;
+    width: 15px;
+    float: right;
+    fill: gray;
+}
+
+.delete:hover {
+    cursor: pointer;
+    fill: darkred;
+}
